@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册-糖尿病智能问答系统</title>
+    <link rel="stylesheet" href="./statics/plugins/bootstrap-5.3.8/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./statics/plugins/fontawesome-free-7.2.0-web/css/all.min.css">
+    <link rel="stylesheet" href="./statics/css/register.css">
+    <link rel="stylesheet" href="./statics/css/links.css">
+    <link rel="shortcut icon" href="./statics/img/bsu-tygc.png" type="image/x-icon"/>
+</head>
+
+<body onmousemove="check_register_button();" onmouseover="check_register_button();" onkeydown="check_register_button();">
+    <div class="account">
+        <h2 class="title">糖尿病智能问答系统</h2>
+        <h4 class="sub-title">注册</h4>
+        <form>
+            <div class="mb-3">
+                <label for="email" class="form-label">邮箱</label>
+                <input type="email" class="form-control" name="email" id="email" aria-describedby="email-help" 
+                    onclick="check_email_format(true);check_register_button();" 
+                    onkeyup="check_email_format(true);check_register_button();" 
+                    onchange="check_email_format(true);check_register_button();">
+                <div id="email-help" class="form-text">请输入真实邮箱。</div>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">密码，8~20个字符之间</label>
+                <input type="password" class="form-control" name="password" id="password" 
+                    onclick="check_password_format(true);check_password_again_format(true);check_register_button();"
+                    onkeyup="check_password_format(true);check_password_again_format(true);check_register_button();" 
+                    onchange="check_password_format(true);check_password_again_format(true);check_register_button();">
+                <div id="password-help" class="form-text"></div>
+            </div>
+            <div class="mb-3">
+                <label for="password-again" class="form-label">确认密码</label>
+                <input type="password" class="form-control" name="password-again" id="password-again" 
+                    onclick="check_password_again_format(true);check_register_button();" 
+                    onkeyup="check_password_again_format(true);check_register_button();" 
+                    onchange="check_password_again_format(true);check_register_button();">
+                <div id="password-again-help" class="form-text"></div>
+            </div>
+            <div class="d-grid gap-2 regist-btn">
+                <button class="btn btn-primary" type="button" id="btn-register" disabled="true" onclick="register_request()">注 册</button>
+                <!-- <button class="btn btn-primary" type="submit" id="btn-register" disabled="true">注 册</button> -->
+            </div>
+        </form>
+    </div>
+    <!--图标区-->
+    <div class="image">
+        <div>
+            <a href="https://www.bsu.edu.cn/">
+                <img src="./statics/img/bsu.png">
+            </a>
+            <a href="https://www.bjut.edu.cn/">
+                <img src="./statics/img/bjut.png">
+            </a>
+        </div>
+    </div>
+    <!--仓库链接-->
+    <div class="link">
+        <a href="https://github.com/ZBX05/Intelligent_Health_Prescription_System">
+            <i class="fa-brands fa-square-github"></i>
+            GitHub
+        </a>
+    </div>
+
+    <script src="./statics/js/common.js"></script>
+
+</body>
+
+</html>

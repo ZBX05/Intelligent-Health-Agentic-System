@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录-糖尿病智能问答系统</title>
+    <link rel="stylesheet" href="./statics/plugins/bootstrap-5.3.8/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./statics/plugins/fontawesome-free-7.2.0-web/css/all.min.css">
+    <link rel="stylesheet" href="./statics/css/login.css">
+    <link rel="stylesheet" href="./statics/css/links.css">
+    <link rel="shortcut icon" href="./statics/img/bsu-tygc.png" type="image/x-icon"/>
+</head>
+<body>
+<!--登录窗-->
+    <div class="account">
+        <h2 class="title">糖尿病智能问答系统</h2>
+        <h4 class="sub-title">登录</h4>
+        <form>
+            <div class="mb-3">
+                <label for="email" class="form-label">邮箱</label>
+                <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" 
+                    onkeyup="clear_input_invalid('email');clear_error_text('email-help');set_text('email-help','我们不会泄露您的邮箱。');">
+                <div id="email-help" class="form-text">我们不会泄露您的邮箱。</div>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">密码</label>
+                <input type="password" class="form-control" name="password" id="password" 
+                    onkeyup="clear_input_invalid('password');clear_error_text('password-help');">
+                <div id="password-help" class="form-text"></div>
+            </div>
+            <div class="d-grid gap-2">
+                <button class="btn btn-primary" id="btn-login" type="button" onclick="login_request()">登 录</button>
+                <button class="btn btn-primary" id="btn-register" type="button" onclick="go_to_register()">注 册</button>
+            </div>
+        </form>
+        <div class="forget">
+            <a href="/forget"> 忘记密码？</a>
+        </div>
+    </div>
+    <!--图标区-->
+    <div class="image">
+        <div>
+            <a href="https://www.bsu.edu.cn/">
+                <img src="./statics/img/bsu.png">
+            </a>
+            <a href="https://www.bjut.edu.cn/">
+                <img src="./statics/img/bjut.png">
+            </a>
+        </div>
+    </div>
+    <!--仓库链接-->
+    <div class="link">
+        <a href="https://github.com/ZBX05/Intelligent_Health_Prescription_System">
+            <i class="fa-brands fa-square-github"></i>
+            GitHub
+        </a>
+    </div>
+
+    <script src="./statics/js/common.js"></script>
+
+</body>
+
+</html>

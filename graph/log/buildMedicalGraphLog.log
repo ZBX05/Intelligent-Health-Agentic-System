@@ -1,0 +1,2 @@
+2026-03-17 22:05:16,274 - buildMedicalGraph.py[line:377] - ERROR: Set relation failed! Relation is: {'relation_type': 'ADE_Disease', 'relation_id': 'R288', 'head_entity_id': 'T568', 'tail_entity_id': 'T564'}, i is 6.
+2026-03-17 22:05:16,274 - buildMedicalGraph.py[line:377] - ERROR: Set relation failed! Relation is: {'relation_type': 'ADE_Disease', 'relation_id': 'R352', 'head_entity_id': 'T684', 'tail_entity_id': 'T679'}, i is 6.

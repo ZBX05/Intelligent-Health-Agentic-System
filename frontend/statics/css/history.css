@@ -1,0 +1,35 @@
+body{
+    margin: 0;
+    height: 100%;
+}
+
+.history-container{
+    height: 600px;
+}
+
+.history-card{
+    height: 100%;
+}
+
+.card{
+    border: 1px solid #d3d3d3;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-header{
+    background-color: #007bff;
+    color: white;
+}
+
+.card-body{
+    padding: 20px;
+}
+
+.scrollable-card-body{
+    overflow-y: auto; /* 当内容溢出时显示垂直滚动条 */
+}
+
+.image-container a{
+    text-decoration: none;
+}

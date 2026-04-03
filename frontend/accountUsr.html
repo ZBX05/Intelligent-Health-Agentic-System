@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>糖尿病智能问答系统</title>
+    <link rel="stylesheet" href="./statics/plugins/bootstrap-5.3.8/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./statics/plugins/fontawesome-free-7.2.0-web/css/all.min.css">
+    <link rel="stylesheet" href="./statics/css/account.css">
+    <link rel="shortcut icon" href="./statics/img/bsu-tygc.png" type="image/x-icon"/>
+</head>
+
+<body onmousemove="check_submit_button();" onmouseover="check_submit_button();" onkeydown="check_submit_button();">
+    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+        <div class="container-fluid">
+            <div class="image-container">
+                <a href="https://www.bsu.edu.cn/">
+                    <img src="./statics/img/bsu.png" height="35px">
+                </a>
+                <a href="https://www.bjut.edu.cn/">
+                    <img src="./statics/img/bjut.png" height="35px">
+                </a>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dialog">
+                            <i class="fa-solid fa-comment-medical"></i> 医学问答
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/graph">
+                            <i class="fa-solid fa-share-nodes"></i> 知识图谱
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/history">
+                            <i class="fa-solid fa-clock-rotate-left"></i> 历史记录
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/body">
+                            <i class="fa-solid fa-file-medical"></i> 身体指标
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <form method="post" action="/do/account/logout">
+                <button type="submit" class="btn btn-danger" id="btn-logout">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </button>
+            </form>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <h2>基本信息</h2>
+        <h6><b>用户邮箱：</b>{{user_email|safe}}</h6>
+        <h6><b>用户类型：</b>{{user_type|safe}}</h6>
+        <h6><b>用户状态：</b>{{user_state|safe}}</h6>
+        <h2>更改密码</h2>
+        <form>
+            <div class="mb-3">
+                <label for="password" class="form-label">新密码</label>
+                <input type="password" class="form-control" id="password" required 
+                    onclick="check_password_format(true);check_password_again_format(true);check_submit_button();"
+                    onkeyup="check_password_format(true);check_password_again_format(true);check_submit_button();" 
+                    onchange="check_password_format(true);check_password_again_format(true);check_submit_button();">
+                <div id="password-help" class="form-text"></div>
+            </div>
+            <div class="mb-3">
+                <label for="password-again" class="form-label">确认新密码</label>
+                <input type="password" class="form-control" id="password-again" required 
+                    onclick="check_password_again_format(true);check_submit_button();" 
+                    onkeyup="check_password_again_format(true);check_submit_button();" 
+                    onchange="check_password_again_format(true);check_submit_button();">
+                <div id="password-again-help" class="form-text"></div>
+            </div>
+            <button type="button" class="btn btn-primary btn-submit" id="btn-submit" 
+                onclick="change_password_request();">提 交</button>
+        </form>
+    </div>
+
+    <script src="./statics/plugins/bootstrap-5.3.8/js/bootstrap.bundle.min.js"></script>
+    <script src="./statics/js/common.js"></script>
+    
+</body>
+
+</html>

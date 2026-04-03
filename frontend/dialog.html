@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>糖尿病智能问答系统</title>
+    <link rel="stylesheet" href="./statics/plugins/bootstrap-5.3.8/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./statics/plugins/fontawesome-free-7.2.0-web/css/all.min.css">
+    <link rel="stylesheet" href="./statics/css/dialog.css">
+    <link rel="shortcut icon" href="./statics/img/bsu-tygc.png" type="image/x-icon"/>
+
+    <!-- Markdown 样式 -->
+    <link rel="stylesheet" href="./statics/plugins/github-markdown-css/github-markdown.min.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+        <div class="container-fluid">
+            <div class="image-container">
+                <a href="https://www.bsu.edu.cn/">
+                    <img src="./statics/img/bsu.png" height="35px">
+                </a>
+                <a href="https://www.bjut.edu.cn/">
+                    <img src="./statics/img/bjut.png" height="35px">
+                </a>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="">
+                            <i class="fa-solid fa-comment-medical"></i> 医学问答
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/graph">
+                            <i class="fa-solid fa-share-nodes"></i> 知识图谱
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/history">
+                            <i class="fa-solid fa-clock-rotate-left"></i> 历史记录
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/body">
+                            <i class="fa-solid fa-file-medical"></i> 身体指标
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <a href="/account">
+                <button type="submit" class="btn btn-outline-light">
+                    <i class="fa-solid fa-user"></i>
+                </button>
+            </a>
+        </div>
+    </nav>
+
+    <!-- 对话区 -->
+    <div class="container dialog-container">
+        <div class="card mt-4 dialog-card">
+            <div class="card-header" id="answer-head">
+                <i class="fa-solid fa-notes-medical"></i> 回答问题
+            </div>
+            <div class="card-body scrollable-card-body" id="answer">
+                <b>欢迎！您可以提出关于糖尿病以及其相关疾病的咨询问题，我将尽可能提供让您满意的答案。</b>
+            </div>
+        </div>
+    </div>
+
+    <!-- 问题输入区 -->
+    <div class="container question-container">
+        <div class="card">
+            <div class="card-header">
+                <i class="fa-solid fa-circle-question"></i> 提出问题
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="form-group">
+                        <textarea class="form-control" id="question-text" rows="3" placeholder="请输入您的问题" maxlength="500"></textarea>
+                    </div>
+                    <button type="button" class="btn btn-success" id="btn-submit" onclick="dialog_request();">
+                        <i class="fa-solid fa-arrow-up"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="./statics/plugins/bootstrap-5.3.8/js/bootstrap.min.js"></script>
+
+    <!-- Markdown 渲染依赖 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/15.0.12/marked.min.js" integrity="sha512-rCQgmUulW6f6QegOvTntKKb5IAoxTpGVCdWqYjkXEpzAns6XUFs8NKVqWe+KQpctp/EoRSFSuykVputqknLYMg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.2.7/purify.min.js" integrity="sha512-78KH17QLT5e55GJqP76vutp1D2iAoy06WcYBXB6iBCsmO6wWzx0Qdg8EDpm8mKXv68BcvHOyeeP4wxAL0twJGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="./statics/js/common.js"></script>
+</body>
+</html>

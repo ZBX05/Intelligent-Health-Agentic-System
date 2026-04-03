@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>糖尿病智能问答系统</title>
+    <link rel="stylesheet" href="./statics/plugins/bootstrap-5.3.8/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./statics/plugins/fontawesome-free-7.2.0-web/css/all.min.css">
+    <link rel="stylesheet" href="./statics/css/graph.css">
+    <link rel="shortcut icon" href="./statics/img/bsu-tygc.png" type="image/x-icon"/>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark" id="nav">
+        <div class="container-fluid">
+            <div class="image-container">
+                <a href="https://www.bsu.edu.cn/">
+                    <img src="./statics/img/bsu.png" height="35px">
+                </a>
+                <a href="https://www.bjut.edu.cn/">
+                    <img src="./statics/img/bjut.png" height="35px">
+                </a>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dialog">
+                            <i class="fa-solid fa-comment-medical"></i> 医学问答
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="">
+                            <i class="fa-solid fa-share-nodes"></i> 知识图谱
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/history">
+                            <i class="fa-solid fa-clock-rotate-left"></i> 历史记录
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/body">
+                            <i class="fa-solid fa-file-medical"></i> 身体指标
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <form method="get" action="/account">
+                <button type="submit" class="btn btn-outline-light">
+                    <i class="fa-solid fa-user"></i>
+                </button>
+            </form>
+        </div>
+    </nav>
+
+    <div class="container search-container">
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="在此输入结点名称，留空则展示图谱（部分）" aria-label="Search" id="search">
+            <button class="btn btn-outline-primary" type="button" id="btn-search" onclick="removeAllSVGs();graph_request();">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </form>
+    </div>
+
+    <div class="graph-container" id="graph-container">
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js" integrity="sha512-vc58qvvBdrDR4etbxMdlTt4GBQk1qjvyORR2nrsPsFPyrs+/u5c3+1Ct6upOgdZoIl7eq6k3a1UPDSNAQi/32A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./statics/js/graph.js"></script>
+    <script src="./statics/js/common.js"></script>
+    <script>
+        graph_request();
+        window.open("{{neo4j_location|safe}}",'newWindow');
+    </script>
+
+</body>
+</html>

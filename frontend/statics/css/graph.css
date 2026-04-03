@@ -1,0 +1,36 @@
+body{
+    margin: 0;
+    overflow-y: hidden;
+}
+
+/* .clearfix:after {
+    content: " ";
+    display: block;
+    clear: both;
+ }
+
+.float-container{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+} */
+
+.search-container{
+    margin-top: 18px;
+    padding-left: 250px;
+    padding-right: 250px;
+    margin-bottom: 10px;
+}
+
+.graph-container{
+    margin-top: 10px;
+}
+
+.nav{
+    background-color: #e3f2fd;
+}
+
+.image-container a{
+    text-decoration: none;
+}

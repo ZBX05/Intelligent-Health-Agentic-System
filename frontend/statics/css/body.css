@@ -1,0 +1,46 @@
+body{
+    margin: 0;
+}
+
+.container{
+    padding-left: 20%;
+    padding-right: 20%;
+    margin-bottom: 40px;
+}
+
+.btn-submit{
+    float: right;
+}
+
+.margin{
+    margin-top: 10px;
+}
+
+.message-list {
+    border: 1px solid #ccc;
+    padding: 10px;
+    /* max-width: 400px; */
+    word-wrap: break-word; /* 允许单词内部换行 */
+    overflow-wrap: break-word; /* 允许单词内部换行，适用于 Firefox 等浏览器 */
+    margin: 20px auto;
+    overflow-y: auto;
+    height: 360px;
+}
+
+.message-item {
+    border-bottom: 1px solid #eee;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+.read {
+    color: green;
+}
+
+.unread {
+    color: red;
+}
+
+.image-container a{
+    text-decoration: none;
+}

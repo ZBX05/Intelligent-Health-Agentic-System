@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>糖尿病智能问答系统</title>
+    <link rel="stylesheet" href="./statics/plugins/bootstrap-5.3.8/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./statics/plugins/fontawesome-free-7.2.0-web/css/all.min.css">
+    <link rel="stylesheet" href="./statics/css/account.css">
+    <link rel="shortcut icon" href="./statics/img/bsu-tygc.png" type="image/x-icon"/>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+        <div class="container-fluid">
+            <div class="image-container">
+                <a href="https://www.bsu.edu.cn/">
+                    <img src="./statics/img/bsu.png" height="35px">
+                </a>
+                <a href="https://www.bjut.edu.cn/">
+                    <img src="./statics/img/bjut.png" height="35px">
+                </a>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dialog">
+                            <i class="fa-solid fa-comment-medical"></i> 医学问答
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/graph">
+                            <i class="fa-solid fa-share-nodes"></i> 知识图谱
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/history">
+                            <i class="fa-solid fa-clock-rotate-left"></i> 历史记录
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/body">
+                            <i class="fa-solid fa-file-medical"></i> 身体指标
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <form method="post" action="/do/account/logout">
+                <button type="submit" class="btn btn-danger" id="btn-logout">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </button>
+            </form>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <h2>基本信息</h2>
+        <h6><b>用户邮箱：</b>{{user_email|safe}}</h6>
+        <h6><b>用户类型：</b>{{user_type|safe}}</h6>
+        <h6><b>用户状态：</b>{{user_state|safe}}</h6>
+        <!--消息列表-->
+        <h2 class="margin">消息</h2>
+        <form>
+            <div class="mb-3">
+                <div class="message-list" id="message-list">
+                    {{message|safe}}
+                    <!-- <div class="message-item">
+                        <p><b>时间:</b> 2024-01-10 08:30 AM</p>
+                        <p><b>发送人邮箱:</b> sender@example.com</p>
+                        <p><b>内容:</b> This is the content of the message. It may be a long piece of text that needs to wrap to the next line automatically.</p>
+                        <p><button type="button" class="btn btn-success" id="btn-read">设为已读</button></p>
+                    </div>
+                    <div class="message-item">
+                        <p><b>时间:</b> 2024-01-10 09:45 AM</p>
+                        <p><b>发送人邮箱:</b> another.sender@example.com</p>
+                        <p><b>内容:</b> Another message content goes here.</p>
+                        <p><b>状态:</b> <span class="read">已读</span></p>
+                    </div> -->
+                </div>
+            </div>
+        </form>
+
+        <!--创建用户-->
+        <h2 class="margin">创建用户</h2>
+        <form>
+            <div class="mb-3">
+                <label for="email-1" class="form-label">邮箱</label>
+                <input type="email" class="form-control" name="email" id="email-1" aria-describedby="email-1-help" 
+                    onclick="check_email_format_by_id(true,'email-1');check_create_button('email-1','password-1');" 
+                    onkeyup="check_email_format_by_id(true,'email-1');check_create_button('email-1','password-1');" 
+                    onchange="check_email_format_by_id(true,'email-1');check_create_button('email-1','password-1');">
+                <div id="email-1-help" class="form-text">请输入真实邮箱。</div>
+            </div>
+            <div class="mb-3">
+                <label for="password-1" class="form-label">密码，8~20个字符之间</label>
+                <input type="password" class="form-control" name="password" id="password-1" 
+                    onclick="check_password_format_by_id(true,'password-1');check_password_again_format_by_id(true,'password-1');
+                        check_create_button('email-1','password-1');"
+                    onkeyup="check_password_format_by_id(true,'password-1');check_password_again_format_by_id(true),'password-1';
+                        check_create_button('email-1','password-1');" 
+                    onchange="check_password_format_by_id(true,'password-1');check_password_again_format_by_id(true,'password-1');
+                        check_create_button('email-1','password-1');">
+                <div id="password-1-help" class="form-text"></div>
+            </div>
+            <div class="mb-3">
+                <label for="password-1-again" class="form-label">确认密码</label>
+                <input type="password" class="form-control" name="password-again" id="password-1-again" 
+                    onclick="check_password_again_format_by_id(true,'password-1');check_create_button('email-1','password-1');" 
+                    onkeyup="check_password_again_format_by_id(true,'password-1');check_create_button('email-1','password-1');" 
+                    onchange="check_password_again_format_by_id(true,'password-1');check_create_button('email-1','password-1');">
+                <div id="password-1-again-help" class="form-text"></div>
+            </div>
+            <button class="btn btn-primary" type="button" id="btn-create" disabled="true" onclick="create_request()">创建</button>
+        </form>
+
+        <!--更改密码-->
+        <h2 class="margin">更改密码</h2>
+        <form>
+            <div class="mb-3">
+                <label for="email" class="form-label">用户邮箱</label>
+                <input type="email" class="form-control" id="email" required 
+                    onclick="check_email_format(true);check_register_button();" 
+                    onkeyup="check_email_format(true);check_register_button();" 
+                    onchange="check_email_format(true);check_register_button();">
+                <div id="email-help" class="form-text"></div>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">新密码</label>
+                <input type="password" class="form-control" id="password" required 
+                    onclick="check_password_format(true);check_password_again_format(true);"
+                    onkeyup="check_password_format(true);check_password_again_format(true);" 
+                    onchange="check_password_format(true);check_password_again_format(true);">
+                <div id="password-help" class="form-text"></div>
+            </div>
+            <div class="mb-3">
+                <label for="password-again" class="form-label">确认新密码</label>
+                <input type="password" class="form-control" id="password-again" required 
+                    onclick="check_password_again_format(true);" 
+                    onkeyup="check_password_again_format(true);" 
+                    onchange="check_password_again_format(true);">
+                <div id="password-again-help" class="form-text"></div>
+            </div>
+            <button type="button" class="btn btn-primary" id="btn-submit" 
+                onclick="change_password_request(true);">更改</button>
+        </form>
+
+        <!--封禁用户-->
+        <h2 class="margin">封禁或解封用户</h2>
+        <form>
+            <div class="mb-3">
+                <label for="email-2" class="form-label">用户邮箱</label>
+                <input type="email" class="form-control" id="email-2" required 
+                    onkeyup="clear_input_invalid('email-2');clear_error_text('email-2-help');set_text('email-2-help','');">
+                <div id="email-2-help" class="form-text"></div>
+            </div>
+            <button type="button" class="btn btn-danger" id="btn-ban" onclick="clear_input_invalid('email-2');
+                clear_error_text('email-2-help');ban_request();">封禁</button>
+            <button type="button" class="btn btn-success" id="btn-unban" onclick="clear_input_invalid('email-2');
+                clear_error_text('email-2-help');unban_request();">解封</button>
+        </form>
+
+    </div>
+
+    <script src="./statics/plugins/bootstrap-5.3.8/js/bootstrap.bundle.min.js"></script>
+    <script src="./statics/js/common.js"></script>
+    
+</body>
+
+</html>

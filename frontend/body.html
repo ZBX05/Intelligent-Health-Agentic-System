@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>糖尿病智能问答系统</title>
+    <link rel="stylesheet" href="./statics/plugins/bootstrap-5.3.8/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./statics/plugins/fontawesome-free-7.2.0-web/css/all.min.css">
+    <link rel="stylesheet" href="./statics/css/body.css">
+    <link rel="shortcut icon" href="./statics/img/bsu-tygc.png" type="image/x-icon"/>
+
+    <!-- Markdown 样式 -->
+    <link rel="stylesheet" href="./statics/plugins/github-markdown-css/github-markdown.min.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+        <div class="container-fluid">
+            <div class="image-container">
+                <a href="https://www.bsu.edu.cn/">
+                    <img src="./statics/img/bsu.png" height="35px">
+                </a>
+                <a href="https://www.bjut.edu.cn/">
+                    <img src="./statics/img/bjut.png" height="35px">
+                </a>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/dialog">
+                            <i class="fa-solid fa-comment-medical"></i> 医学问答
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/graph">
+                            <i class="fa-solid fa-share-nodes"></i> 知识图谱
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/history">
+                            <i class="fa-solid fa-clock-rotate-left"></i> 历史记录
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="">
+                            <i class="fa-solid fa-file-medical"></i> 身体指标
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <a href="/account">
+                <button type="submit" class="btn btn-outline-light">
+                    <i class="fa-solid fa-user"></i>
+                </button>
+            </a>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h2 class="margin">个人信息</h2>
+        <form>
+            <div class="mb-3">
+                <label for="gender" class="form-label">性别</label>
+                <div class="d-flex gap-4 mt-1" id="gender-group">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="gender-male" onchange="on_gender_toggle('gender-male')" {% if user_gender == 'male' %}checked{% endif %}>
+                        <label class="form-check-label" for="gender-male">男</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="gender-female" onchange="on_gender_toggle('gender-female')" {% if user_gender == 'female' %}checked{% endif %}>
+                        <label class="form-check-label" for="gender-female">女</label>
+                    </div>
+                </div>
+                <input type="hidden" id="gender" name="gender" value="{{ user_gender|default('')|safe }}">
+                <div id="gender-help" class="form-text"></div>
+            </div>
+            <div class="mb-3">
+                <label for="age" class="form-label">年龄</label>
+                <input type="number" class="form-control" id="age" value="{{ user_age|default('')|safe }}" min="1">
+                <div id="age-help" class="form-text"></div>
+            </div>
+            <div class="mb-3">
+                <label for="height" class="form-label">身高</label>
+                <input type="number" class="form-control" id="height" value="{{ user_height|default('')|safe }}" min="1">
+                <div id="height-help" class="form-text">单位：cm</div>
+            </div>
+            <div class="mb-3">
+                <label for="weight" class="form-label">体重</label>
+                <input type="number" class="form-control" id="weight" value="{{ user_weight|default('')|safe }}" min="1">
+                <div id="weight-help" class="form-text">单位：kg</div>
+            </div>
+        <h2 class="margin">生理指标</h2>
+            <div class="mb-3">
+                <label for="fpg" class="form-label">空腹血糖（FPG）</label>
+                <input type="number" class="form-control" id="fpg" value="{{ user_fpg|default('')|safe }}" min="0">
+                <div id="fpg-help" class="form-text">单位：mmol/L</div>
+            </div>
+            <div class="mb-3">
+                <label for="ogtt" class="form-label">OGTT 2小时血糖</label>
+                <input type="number" class="form-control" id="ogtt" value="{{ user_ogtt|default('')|safe }}" min="0">
+                <div id="ogtt-help" class="form-text">单位：mmol/L</div>
+            </div>
+            <div class="mb-3">
+                <label for="hba1c" class="form-label">糖化血红蛋白（HbA1c）</label>
+                <input type="number" class="form-control" id="hba1c" value="{{ user_hba1c|default('')|safe }}" min="0" max="100">
+                <div id="hba1c-help" class="form-text">单位：%</div>
+            </div>
+            <button type="button" class="btn btn-primary" id="btn-submit"
+                onclick="change_body_request();">保存</button>
+        </form>
+    </div>
+
+    <script src="./statics/plugins/bootstrap-5.3.8/js/bootstrap.min.js"></script>
+
+    <script src="./statics/js/common.js"></script>
+</body>
+</html>
