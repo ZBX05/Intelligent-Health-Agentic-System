@@ -4,7 +4,7 @@
 
 ## 核心功能
 
-1. 智能问答（Agent）  
+1. 智能问答  
 
 - 通过 LangChain create_agent 组织多工具协作。
 - 可调用图谱检索工具，将 Neo4j 查询结果作为回答依据。
@@ -44,7 +44,7 @@
 | Neo4j | >= 4.4 | 存储糖尿病知识图谱 |
 | OpenSSL | >= 3.0 | 可选，仅 HTTPS 本地开发需要 |
 
-### Python 主要依赖（按当前代码）
+### Python 主要依赖
 
 | 包名 | 用途 |
 | :-- | :-- |
@@ -108,7 +108,7 @@ python run.py
 - 证书与私钥默认路径由 web_config.cfg 中 cert_dir 和 key_dir 控制。
 - 生产环境请替换为受信任证书，并关闭调试配置。
 
-## 仓库目录说明（当前）
+## 仓库目录说明
 
 ```text
 health_agentic_system/
@@ -119,6 +119,5 @@ health_agentic_system/
 ├─ graph/                   # 知识图谱构建与数据处理脚本
 ├─ nlp/                     # NLP 与模型相关数据/脚本
 ├─ framwork/                # 设计文档与流程图文件
-├─ main.py                  # 顶层示例脚本
 └─ README.md                # 项目说明文档
 ```
